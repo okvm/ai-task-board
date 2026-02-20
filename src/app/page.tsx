@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useQuery } from '@convex-dev/react'
 import { Plus, Filter, BarChart3 } from 'lucide-react'
 import TaskCard from '../components/TaskCard'
 import TaskForm from '../components/TaskForm'
@@ -12,7 +11,29 @@ export default function TaskBoard() {
   const [filter, setFilter] = useState<'all' | 'me' | 'you'>('all')
   const [statusFilter, setStatusFilter] = useState<'all' | 'todo' | 'inprogress' | 'done'>('all')
   
-  const tasks = useQuery('tasks:getTasks') || []
+  // 临时任务数据（Convex连接问题解决后替换为真实数据）
+  const tasks = [
+    {
+      _id: '1',
+      title: '欢迎使用AI任务看板',
+      description: '这是一个演示任务，展示看板功能',
+      status: 'todo',
+      assignee: 'me',
+      priority: 'high',
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    },
+    {
+      _id: '2',
+      title: '测试AI协作功能',
+      description: '验证实时同步和状态管理',
+      status: 'inprogress',
+      assignee: 'you',
+      priority: 'medium',
+      createdAt: Date.now() - 3600000,
+      updatedAt: Date.now(),
+    }
+  ]
   
   // 过滤任务
   const filteredTasks = tasks.filter((task: any) => {

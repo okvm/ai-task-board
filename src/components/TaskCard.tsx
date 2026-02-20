@@ -1,6 +1,5 @@
 'use client'
 
-import { useMutation } from '@convex-dev/react'
 import { Trash2, Edit, Clock, User } from 'lucide-react'
 
 interface Task {
@@ -21,9 +20,6 @@ interface TaskCardProps {
 }
 
 export default function TaskCard({ task, onEdit }: TaskCardProps) {
-  const deleteTask = useMutation('tasks:deleteTask')
-  const updateTask = useMutation('tasks:updateTask')
-  
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'todo': return 'task-todo'
@@ -43,15 +39,14 @@ export default function TaskCard({ task, onEdit }: TaskCardProps) {
   }
   
   const handleStatusChange = async (newStatus: 'todo' | 'inprogress' | 'done') => {
-    await updateTask({
-      id: task._id,
-      status: newStatus,
-    })
+    // 临时实现 - 实际项目中连接到Convex
+    console.log(`任务状态更改为: ${newStatus}`)
   }
   
   const handleDelete = async () => {
     if (window.confirm('确定要删除这个任务吗？')) {
-      await deleteTask({ id: task._id })
+      // 临时实现 - 实际项目中连接到Convex
+      console.log('删除任务')
     }
   }
   
