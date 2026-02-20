@@ -1,0 +1,8 @@
+{
+  "project": "task-board",
+  "team": "default",
+  "prodUrl": "",
+  "functions": {
+    "src": "src/convex"
+  }
+}
